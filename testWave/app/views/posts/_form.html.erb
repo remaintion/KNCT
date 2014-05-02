@@ -1,0 +1,24 @@
+<%= form_for(@post, :html => { :multipart => true }) do |f| %>
+   <div class="field">
+     <%= f.label :title %><br>
+     <%= f.text_field :title %>
+
+<%= f.label :description %><br>
+     <%= f.text_field :description %>
+
+   </div>
+
+   <%= f.fields_for :post_attachments do |p| %>
+     <div class="field">
+       <%= p.label :avatar %><br>
+       <%= p.file_field :avatar, :multiple => true, name: "post_attachments[avatar][]" %>
+     </div>
+   <% end %>
+
+   <%= f.label :"Post By" %><br>
+     <%= f.text_field :username ,:readonly=>true, :value=>current_user.email %>
+
+   <div class="actions">
+     <%= f.submit %>
+   </div>
+<% end %>

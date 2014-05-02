@@ -1,0 +1,25 @@
+<h1>Listing post_attachments</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Post</th>
+      <th>Avatar</th>
+      <th>Description</th>
+      <th>Post By</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @photo.each do |post_attachment| %>
+      <tr>
+        <td><%= post_attachment.post_id %></td>
+        <td><%=image_tag post_attachment.avatar, :width=>300, :height=>300 %></td>
+        <td><%= @posts.find(post_attachment.post_id).description %></td>
+        <td><%= @posts.find(post_attachment.post_id).username %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
