@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "vendor/modernizr" %>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+
+
+
+  <div id="user_nav">
+<nav class="top-bar" data-topbar>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">My Site</a></h1>
+    </li>
+     <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+    <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+    <% if user_signed_in? %>
+      <li class="active"><a href="#"><%= current_user.email %></a></li>
+
+      <li class="inactive"><%= link_to 'New Post', new_post_path %></li>
+      <li class="inactive"><a href="#"><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></a>
+      </li>
+<% else %>
+      <li class="active"><%= link_to "Sign up", new_user_registration_path %></li>
+      <li class="inactive"><%= link_to "sign in", new_user_session_path %>
+      </li>
+    </ul>
+    <% end %>
+
+  </section>
+</nav>
+
+        <p class="notice"><%= notice %></p>
+        <p class="alert"><%= alert %></p>
+        
+    <%= yield %>
+    <%= javascript_include_tag "application" %>
+  </body>
+</html>
