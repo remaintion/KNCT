@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'dislike/:id' => 'welcome#dislike' , as: :dislike
+
+  get 'like/:id' => 'welcome#like' , as: :like
+
   devise_for :users
   get 'welcome/index'
   root 'welcome#index'

@@ -1,18 +1,39 @@
+
 <% @posts.each do |p|%>
 
-<div class="panel callout radius" align="center">
-	<p align="left"><%= p.created_at %></p>
-  	<p><%= image_tag p.photo %></p>
-  	<h3 align="left">Description</h3>
-  	<p><%= p.discription %></p>
-  	<h3 align="right">Post By</h3>
-  	<p align="right"><%= image_tag  @users.find_by(email: p.email).avatar, :width=>"80", :height=>"80" %></p>
-  	<p align="right"><%= p.email %></p>
-  	
-  	
+<p align="left"><%= p.created_at %></p>
+<div class="row">
+  <div class="large-8 columns background_photo" >
+
+  <p ><%= image_tag p.photo %></p>
+
+  </div>
+  <div class="large-2 columns "> <h5 align="left">Description</h5>
+    <p ><%= simple_format(p.discription) %></p>
+    <h5 >Post By</h5>
+    <p align="right"><%= image_tag  @users.find_by(email: p.email).avatar, :width=>"80", :height=>"80" %></p>
+    <p align="right"><%= p.email %></p></div>
 </div>
+
+
+	
+  	
+
+    <%if @signin %>
+    <% if @voted.include?(p) %>
+    <p><%= link_to 'Dislike', dislike_path(p) %></p>
+    <% else%>
+    <p><%= link_to 'Like', like_path(p) %></p>
+    <% end%>
+    <p>Score <%= p.votes_for.size%></p>
+  	<% end%>
+
 
 
 
 <% end%>
 
+
+<div class="flickr_pagination" >
+    <%= will_paginate @posts %>
+  </div>
