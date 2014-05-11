@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20140509003459) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "email"
-    t.text   "discription"
+    t.string   "discription"
   end
 
   create_table "users", force: true do |t|

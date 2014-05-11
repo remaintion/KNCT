@@ -44,12 +44,24 @@
   </section>
 </nav>
 
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        
-<div style="margin-left:20%;margin-right:20%">
-    <%= yield %>
+<% if notice%>
+<div data-alert class="alert-box">
+    <%= notice %>
+  <a href="#" class="close">&times;</a>
 </div>
+<% end%>
+
+<% if alert%>
+<div data-alert class="alert-box alert">
+    <%= alert %>
+  <a href="#" class="close">&times;</a>
+</div>
+<% end%>
+
+        
+        
+    <%= yield %>
+
 
     <%= javascript_include_tag "application" %>
   </body>

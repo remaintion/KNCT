@@ -16,8 +16,11 @@
 
  */
 
-.background_photo{
-	height: 600px;
-	border-color: green;
-	border-width: 5px;
+body{
+	background-color: #34495e;
+	color: white;
+}
+
+h5{
+	color: #7f8c8d;
 }

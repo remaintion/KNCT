@@ -5,6 +5,7 @@ gem 'foundation-rails'
 gem 'devise'
 gem 'acts_as_votable'
 gem 'will_paginate'
+gem 'rmagick'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
