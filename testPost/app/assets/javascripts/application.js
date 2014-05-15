@@ -21,17 +21,17 @@ $(function(){ $(document).foundation(); });
 $(document).keydown(function(event){
     switch (event.keyCode) {
             case 37:
-            	//var pathname = $(location).attr('href');
-            	var current_page = getParameterByName('page');
-            	var next_page = parseInt(current_page)-1;
+                //var pathname = $(location).attr('href');
+                var current_page = getParameterByName('page');
+                var next_page = parseInt(current_page)-1;
 
-                window.location.replace("http://localhost:3000/welcome/index?page="+next_page);
+                window.location.replace("http://localhost:3000/welcome/photo?page="+next_page);
                 break
             case 39:
                 var current_page = getParameterByName('page');
-            	var next_page = parseInt(current_page)+1;
+                var next_page = parseInt(current_page)+1;
 
-                window.location.replace("http://localhost:3000/welcome/index?page="+next_page);
+                window.location.replace("http://localhost:3000/welcome/photo?page="+next_page);
                 break;
         }});
 

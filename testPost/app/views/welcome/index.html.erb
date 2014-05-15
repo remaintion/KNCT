@@ -1,42 +1,20 @@
-
-
-<div style="margin-left:20%;margin-right:20%">
-<% @posts.each do |p|%>
-
-<p align="left"><%= p.created_at %></p>
-<div class="row">
-  <div class="large-8 columns background_photo" >
-
-  <p ><%= image_tag p.photo%></p>
-
+  <div class="small-6 small-centered columns">
+    Welcome to this website
   </div>
-  <div class="large-4 columns "> <h5 align="left">Description</h5>
-    <p ><%= simple_format(p.discription) %></p>
-    <h5 >Post By</h5>
-    <p align="right"><%= image_tag  @users.find_by(email: p.email).avatar, :width=>"80", :height=>"80" %></p>
-    <p align="right"><%= p.email %></p></div>
-</div>
 
+<div class=" small-5 small-centered columns">
+  <ul data-orbit class="example-orbit">
+     <% @posts.each do |p|%>
+      <li style="height:400px; overflow:hidden">
+        <%= image_tag p.photo%>
+        <div class="orbit-caption">
+          <%= p.discription%>
+        </div>
+      </li>
+      <% end%>
+    </ul>
+  </div>
 
-	
-  	
-
-    <%if @signin %>
-    <% if @voted.include?(p) %>
-    <p><%= link_to 'Dislike', dislike_path(p), :style=>"color: red" %></p>
-    <% else%>
-    <p><%= link_to 'Like', like_path(p), :style=>"color: #3498db" %></p>
-    <% end%>
-    <p>Score <%= p.votes_for.size%></p>
-  	<% end%>
-
-
-
-
-<% end%>
-</div>
-
-
-<div class="flickr_pagination" >
-    <%= will_paginate @posts %>
+  <div class="small-6 small-centered columns">
+    <%= link_to "Start" ,welcome_photo_path, :class=>"expand button"%>
   </div>

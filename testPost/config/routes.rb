@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'welcome/photo'
+
   get 'dislike/:id' => 'welcome#dislike' , as: :dislike
 
   get 'like/:id' => 'welcome#like' , as: :like

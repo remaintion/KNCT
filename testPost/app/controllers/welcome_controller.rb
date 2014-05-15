@@ -1,14 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-  	@posts = Post.paginate(:page => params[:page])
-  	@users = User.all
-
-  	if current_user
-  		@signin = true
-  		@voted = current_user.find_voted_items
-  	else
-  		@signin = false
-  	end
+  	 @posts = Post.all
   end
 
   def like 
@@ -27,5 +19,17 @@ class WelcomeController < ApplicationController
   	@score = @post.votes_for.size
   	redirect_to(:back)
 
+  end
+
+  def photo
+    @posts = Post.paginate(:page => params[:page])
+    @users = User.all
+
+    if current_user
+      @signin = true
+      @voted = current_user.find_voted_items
+    else
+      @signin = false
+    end
   end
 end
